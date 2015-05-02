@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Marionette Boilerplate</title>
+    <script src="/backbone.marionette/jquery.js"></script>
+    <script src="/backbone.marionette/underscore.js"></script>
+    <script src="/backbone.marionette/backbone.js"></script>
+    <script src="/backbone.marionette/backbone.marionette.js"></script>
+    <script src="/backbone.stickit-0.9.0/backbone.stickit.js"></script>
+    <script src="/backbone.validation-0.11.3/dist/backbone-validation.js"></script>
+    <script src="/app.js"></script>
+  </head>
+  <body>
+    <h1>Marionette Boilerplate</h1>
+    <div id="main"></div>
+
+    <script type="text/template" id="template-form">
+      <form>
+        <input type="text" name="full_name">
+        <button type="submit">Submit</button>
+      </form>
+      <div class="alert" style="display:none; color:red">ERROR!</div>
+    </script>
+
+    <script type="text/template" id="template-confirmation">
+      <table>
+        <tbody>
+          <th>Full Name</th>
+          <td id="preview-full_name"></td>
+        </tbody>
+      </table>
+      <button>Cancel</button>
+    </script>
+  </body>
+</html>
