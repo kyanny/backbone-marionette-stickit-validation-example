@@ -9,7 +9,7 @@ var RootView = Marionette.LayoutView.extend({
 
 var Model = Backbone.Model.extend({
   defaults: {
-    full_name: ''
+    full_name: 'Kensuke Nagae'
   },
   validation: {
     full_name: {
@@ -31,14 +31,21 @@ var FormView = Marionette.ItemView.extend({
   },
   onShow: function() {
     this.stickit();
-    Backbone.Validation.bind(this);
+    console.log(this.cid, this.ui.alert);
+    Backbone.Validation.bind(this, {
+      valid: function(view, attr) {
+        console.log(view.cid, view.ui.alert);
+        view.ui.alert.hide();
+      },
+      invalid: function(view, attr, error) {
+        view.ui.alert.show();
+      }
+    });
   },
   onSubmit: function(e) {
     e.preventDefault();
     if (this.model.isValid(true)) {
       this.trigger('submit');
-    } else {
-      this.ui.alert.show();
     }
   }
 });
@@ -63,6 +70,7 @@ var ConfirmationView = Marionette.ItemView.extend({
 App.on('start', function() {
   App.rootView = new RootView();
   var model = new Model();
+  window.model = model;
 
   this.showForm = function(model) {
     var formView = new FormView({
