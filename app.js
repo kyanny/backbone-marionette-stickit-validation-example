@@ -47,6 +47,9 @@ var FormView = Marionette.ItemView.extend({
     if (this.model.isValid(true)) {
       this.trigger('submit');
     }
+  },
+  onDestroy: function() {
+    Backbone.Validation.unbind(this);
   }
 });
 
